@@ -1,5 +1,7 @@
 package kr.green.test.vo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BoardVO {
@@ -38,11 +40,21 @@ public class BoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getRegistered() {
-		return registered;
+	public String getRegistered() {
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");	//jsp에서 호출할 때 원하는 형식으로 보기 위해 코드를 수정
+		return f.format(registered);										//변수 registered를 위의 형식으로 변환하여 반환
 	}
-	public void setRegistered(Date registered) {
-		this.registered = registered;
+	public String getRegisteredUntilDay() {
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");			//jsp에서 호출할 때 원하는 형식으로 보기 위해 코드를 수정
+		return f.format(registered);										//변수 registered를 위의 형식으로 변환하여 반환
+	}
+	public void setRegistered(String registered) {		//jsp에서 form태그를 통해 컨트롤러로 넘어갈 떄 setter를 호출하여 전송
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+		try {
+			this.registered = f.parse(registered);
+		}catch(ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	public String getFile() {
 		return file;

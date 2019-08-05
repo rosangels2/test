@@ -4,6 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.test.dao.BoardDAO">
 <select id="selectBoardList" resultType="kr.green.test.vo.BoardVO">
-	select * from board where valid = 'I' order by num desc
+	select * from board where 
+	<choose>	<!-- 쿼리문에서 if 태그는 else를 처리하지 못하기 떄문에 choose태그를 사용 -->
+		<when test='valid.equals("I") || valid.equals("D")'>
+			valid = #{valid}
+		</when>
+		<otherwise>		<!-- else일 경우  -->
+			valid='I' or valid='D'	<!-- I이거나 D인 경우 전부 검색 -->
+		</otherwise>
+	</choose>
+	order by num desc 
+	limit #{cri.pageStart}, #{cri.perPageNum}	<!-- Param을 쓸 경우 객체.속성명으로 getter를 호출 -->
+</select>
+<select id="selectCountBoardList" resultType="int">
+	select count(*) from board where 
+	<choose>	<!-- 쿼리문에서 if 태그는 else를 처리하지 못하기 떄문에 choose태그를 사용 -->
+		<when test='valid.equals("I") || valid.equals("D")'>
+			valid = #{valid}
+		</when>
+		<otherwise>		<!-- else일 경우  -->
+			valid='I' or valid='D'	<!-- I이거나 D인 경우 전부 검색 -->
+		</otherwise>
+	</choose>
 </select>
 </mapper>

@@ -22,7 +22,7 @@
     
     <!-- (1) -->    
     <definition name="/login/*" extends=".login">	<!-- 경로가 /login/*이라면 .login 레이아웃을 적용 -->
-      <put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />	<!-- /login/*의 *부분을 {1}에 적용 -->
+      <put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />	<!-- 경로 /login/*의 *부분을 {1}에 적용 -->
     </definition>
  
     <!-- (2) -->

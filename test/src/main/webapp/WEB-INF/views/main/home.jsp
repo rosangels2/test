@@ -14,6 +14,7 @@
 </head>
 <body>
 	<div style="height: 600px;">
+	<c:if test="${user eq null}">
 		<div class="login-box">
 			<form method="post" action="<%=request.getContextPath()%>/">
 				<div class="form-group">
@@ -25,6 +26,7 @@
 				<button type="submit" class="btn btn-outline-success col-12">로그인</button>
 			</form>
 		</div>
+	</c:if>
 	</div>
 </body>
 </html>

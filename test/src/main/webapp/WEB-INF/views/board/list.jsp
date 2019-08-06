@@ -1,7 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div>
+<head>
+<style>
+.page-item .fas{
+	font-size:20px;
+}
+</style>
+</head>
+<div style="min-height: 561px;">
 	  <table class="table table-hover">
 	    <thead>
 	      <tr>
@@ -31,4 +38,30 @@
 		    </c:if>
 	    </tbody>
 	  </table>
+	<ul class="pagination" style="justify-content: center;">
+	    <c:if test="${pageMaker.prev}">
+	        <li class="page-item">
+	            <a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pageMaker.startPage-1}"><i class="fas fa-chevron-left"></i></i></a>
+	        </li>
+	    </c:if>
+	    <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage}" var="index">
+ 			<c:choose>
+ 			<c:when test="${pageMaker.criteria.page != index}">
+	 			<li class="page-item">
+		            <a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${index}">${index}</a>
+		        </li>
+		    </c:when>
+		    <c:otherwise>
+		        <li class="page-item active">
+		            <a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${index}">${index}</a>
+		        </li>
+		    </c:otherwise>
+	        </c:choose>
+	    </c:forEach>
+	    <c:if test="${pageMaker.next}">
+	        <li class="page-item">
+	            <a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pageMaker.endPage+1}"><i class="fas fa-chevron-right"></i></i></a>
+	        </li>
+	    </c:if>
+	</ul>
 </div>

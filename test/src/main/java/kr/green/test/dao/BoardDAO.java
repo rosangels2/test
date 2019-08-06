@@ -15,4 +15,6 @@ public interface BoardDAO {
 
 	public void insertBoard(@Param("board")BoardVO board);
 
+	public BoardVO selectBoard(@Param("num")Integer num);	//변수 num에 Integer num을 저장 -> ("num", num) 형식
+
 }

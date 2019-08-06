@@ -25,7 +25,7 @@ public class BoardController {
 	PageMakerService pageMakerService;
 	
 	@RequestMapping(value= "/list", method = RequestMethod.GET)
-	public ModelAndView boardList(ModelAndView mv, Criteria cri) throws Exception{
+	public ModelAndView boardList(ModelAndView mv, Criteria cri){
 		String valid = "I";
 		int displayPageNum = 5;
 		ArrayList<BoardVO> list = boardService.getBoardList(cri, valid);
@@ -38,13 +38,23 @@ public class BoardController {
 	    return mv;
 	}
 	@RequestMapping(value= "/register", method = RequestMethod.GET)
-	public ModelAndView boardRegisterGet(ModelAndView mv) throws Exception{
+	public ModelAndView boardRegisterGet(ModelAndView mv){
 		mv.setViewName("/board/register");	//setViewName :  return "/main/home" 와 같이 /main/home.jsp를 호출
 	    return mv;
 	}
 	@RequestMapping(value= "/register", method = RequestMethod.POST)
-	public String boardRegisterPost(Model model, BoardVO bVo) throws Exception{
+	public String boardRegisterPost(Model model, BoardVO bVo){
 		boardService.registerBoard(bVo);
 	    return "redirect:/board/list";
 	}
+	@RequestMapping(value= "/display", method = RequestMethod.GET)
+	public ModelAndView boardDisplayGet(ModelAndView mv, Integer num, Criteria cri){
+		BoardVO board = boardService.getBoard(num);
+		mv.setViewName("/board/display");	//setViewName :  return "/main/home" 와 같이 /main/home.jsp를 호출
+		mv.addObject("board", board);
+		mv.addObject("cri", cri);
+	    return mv;
+	}
+	
+	
 }

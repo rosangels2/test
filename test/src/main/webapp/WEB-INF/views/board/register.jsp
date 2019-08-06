@@ -15,7 +15,7 @@
 		<div class="form-group">
 		  <input type="text" class="form-control" name="writer" value="${user.id}">
 		</div>
-		<textarea id="summernote" name="contents"></textarea>
+		<textarea id="summernote" name="contents"></textarea>	<!-- textarea를  -->
 		<button type="submit" class="btn btn-success">등록</button>
 	</form>
 </div>
@@ -27,5 +27,5 @@ $(document).ready(function(){
     height: 100,
     lang: 'ko-KR'
   });
-});	//레디
+});		//레디
 </script>

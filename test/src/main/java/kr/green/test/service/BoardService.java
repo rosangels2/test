@@ -2,6 +2,8 @@ package kr.green.test.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import kr.green.spring.pagination.Criteria;
 import kr.green.test.vo.BoardVO;
 
@@ -14,5 +16,11 @@ public interface BoardService {
 	public void registerBoard(BoardVO bVo);
 
 	public BoardVO getBoard(Integer num);
+
+	public void modifyBoard(BoardVO bVo);
+
+	public boolean isWriter(Integer num, HttpServletRequest r);
+
+	public void deleteBoard(Integer num);
 	
 }

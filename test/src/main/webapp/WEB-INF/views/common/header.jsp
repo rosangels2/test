@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 	<div class="container">
-	  	<a class="navbar-brand" href="#">Navbar</a>
+	  	<a class="navbar-brand" href="<%=request.getContextPath()%>/">메인 페이지</a>
 	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 	    	<span class="navbar-toggler-icon"></span>
 	  	</button>
@@ -17,7 +17,10 @@
 		      	</li>
 		      	<li class="nav-item">
 		        	<a class="nav-link" href="#">Link</a>
-		      	</li>    
+		      	</li>
+				<c:if test="${user ne null}">
+					<li class="nav-item">접속중인 아이디 : ${user.id}</li>  		
+				</c:if>		      	
 	    	</ul>
 		</div> 
 		<c:if test="${user ne null}">

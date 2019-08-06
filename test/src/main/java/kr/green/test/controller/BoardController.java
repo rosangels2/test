@@ -2,6 +2,8 @@ package kr.green.test.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,6 +57,32 @@ public class BoardController {
 		mv.addObject("cri", cri);
 	    return mv;
 	}
-	
+	@RequestMapping(value= "/modify", method = RequestMethod.GET)
+	public ModelAndView boardModifyGet(ModelAndView mv, Integer num, Criteria cri, HttpServletRequest r){
+		boolean isWriter = boardService.isWriter(num, r);
+		BoardVO board = null;
+		if(isWriter){
+			board = boardService.getBoard(num);
+			mv.setViewName("/board/modify");	//setViewName :  return "/main/home" 와 같이 /main/home.jsp를 호출
+		}else {
+			mv.setViewName("redirect:/board/list");
+		}
+		mv.addObject("board", board);
+		mv.addObject("cri", cri);
+	    return mv;
+	}
+	@RequestMapping(value= "/modify", method = RequestMethod.POST)
+	public String boardModifyPost(BoardVO bVo){
+		boardService.modifyBoard(bVo);
+	    return "redirect:/board/list";
+	}
+	@RequestMapping(value= "/delete", method = RequestMethod.GET)
+	public ModelAndView boardDeleteGet(ModelAndView mv, Integer num, HttpServletRequest r){
+		if(boardService.isWriter(num, r)){
+			boardService.deleteBoard(num);
+		}
+		mv.setViewName("redirect:/board/list");	//setViewName :  return "/main/home" 와 같이 /main/home.jsp를 호출
+	    return mv;
+	}
 	
 }

@@ -62,7 +62,7 @@
 	    <!--
 		<beans:constructor-arg value="서버에 저장할 경로"></beans:constructor-arg>
 		-->
-	    <beans:constructor-arg value="C:\\최진영\\git\\test\\uploadfiles"></beans:constructor-arg>
+	    <beans:constructor-arg value="C:\\Users\\82102\\Desktop\\java\\git\\test\\uploadfiles"></beans:constructor-arg>
 	</beans:bean>
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />

@@ -1,0 +1,8 @@
+﻿css, js 연결 방법 - src > main > webapp > resources(없으면 폴더 생성) > css, js(폴더 생성) > css, js파일 생성
+예시)
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/xx.css">
+
+
+jsp 코드 include 방법 - src > main > webapp > WEB-INF > views > common(없으면 폴더 생성) > jsp 파일 생성 후 공통적으로 쓰는 코드 입력
+예시)
+<jsp:include page="/WEB-INF/views/common/xxx.jsp"></jsp:include>

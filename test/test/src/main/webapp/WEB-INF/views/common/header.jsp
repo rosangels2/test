@@ -19,7 +19,7 @@
 		        	<a class="nav-link" href="#">Link</a>
 		      	</li>
 				<c:if test="${user ne null}">
-					<li class="nav-item">접속중인 아이디 : ${user.id}</li>  		
+					<li class="nav-item" style="color: white; text-align: center; padding-top: 8px;">접속중인 아이디 : ${user.id}</li>  		
 				</c:if>		      	
 	    	</ul>
 		</div> 

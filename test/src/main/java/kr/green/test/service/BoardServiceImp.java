@@ -65,4 +65,11 @@ public class BoardServiceImp implements BoardService{
 		board.setValid("D");
 		boardDao.updateBoard(board);
 	}
+
+	@Override
+	public BoardVO increaseViews(BoardVO board) {
+		board.setViews(board.getViews()+1);
+		boardDao.updateBoard(board);
+		return board;
+	}
 }

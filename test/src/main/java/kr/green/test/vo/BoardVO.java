@@ -59,6 +59,16 @@ public class BoardVO {
 	public String getFile() {
 		return file;
 	}
+	public String getFileName(){
+		if(file == null){
+			return "";
+		}
+		int index = file.indexOf("_");	//UUID 뒤에 오는 첫번째 _의 위치를 찾아서 저장
+		if(index == -1){	//파일이 없을 때의 예외처리
+			return "";
+		}
+		return file.substring(index+1);	//언더바 다음 위치의 문자열을 서브스트링으로 변환하여 반환
+	}
 	public void setFile(String file) {
 		this.file = file;
 	}

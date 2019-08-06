@@ -7,6 +7,15 @@ public class Criteria {
 	private int type;		//검색 카테고리 값을 저장할 멤버변수
 	private String search;	//검색창에 입력된 값을 저장할 멤버변수
 	
+	
+	public Criteria() {	//기본 생성자
+		this.page = 1;
+		this.perPageNum = 10;
+		this.search = "";
+		this.type = 0;
+	}
+	
+	
 	public int getType() {
 		return type;
 	}
@@ -18,10 +27,6 @@ public class Criteria {
 	}
 	public void setSearch(String search) {
 		this.search = search;
-	}
-	public Criteria() {	//기본 생성자
-		this.page = 1;
-		this.perPageNum = 10;
 	}
 	public int getPage() {
 		return page;

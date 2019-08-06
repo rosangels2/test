@@ -13,6 +13,20 @@
 			valid='I' or valid='D'	<!-- I이거나 D인 경우 전부 검색 -->
 		</otherwise>
 	</choose>
+	<choose>
+		<when test="cri.type == 1">
+			and title like concat('%',#{cri.search},'%')
+		</when>
+		<when test="cri.type == 2">
+			and writer like concat('%',#{cri.search},'%')
+		</when>
+		<when test="cri.type == 1">
+			and contents like concat('%',#{cri.search},'%')
+		</when>
+		<otherwise>	<!-- 전체 검색일 경우 -->
+			and (title like concat('%',#{cri.search},'%') or writer like concat('%',#{cri.search},'%') or contents like concat('%',#{cri.search},'%'))
+		</otherwise>
+	</choose>
 	order by num desc 
 	limit #{cri.pageStart}, #{cri.perPageNum}	<!-- Param을 쓸 경우 객체.속성명으로 getter를 호출 -->
 </select>
@@ -24,6 +38,20 @@
 		</when>
 		<otherwise>		<!-- else일 경우  -->
 			valid='I' or valid='D'	<!-- I이거나 D인 경우 전부 검색 -->
+		</otherwise>
+	</choose>
+	<choose>
+		<when test="cri.type == 1">
+			and title like concat('%',#{cri.search},'%')
+		</when>
+		<when test="cri.type == 2">
+			and writer like concat('%',#{cri.search},'%')
+		</when>
+		<when test="cri.type == 1">
+			and contents like concat('%',#{cri.search},'%')
+		</when>
+		<otherwise>	<!-- 전체 검색일 경우 -->
+			and (title like concat('%',#{cri.search},'%') or writer like concat('%',#{cri.search},'%') or contents like concat('%',#{cri.search},'%'))
 		</otherwise>
 	</choose>
 </select>

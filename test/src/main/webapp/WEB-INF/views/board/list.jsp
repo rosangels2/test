@@ -80,4 +80,7 @@
 	        </li>
 	    </c:if>
 	</ul>
+	<div>
+		<a href="<%=request.getContextPath()%>/board/register"><button class="btn btn-success">게시글 등록</button></a>
+	</div>
 </div>

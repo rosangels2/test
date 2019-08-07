@@ -41,7 +41,7 @@ $(document).ready(function(){
 			return false;
 		}else{
 			alert('회원가입을 진행합니다.');
-			return false;
+			return true;
 		}
 /* 		alert('회원가입이 완료 되었습니다.');
 		isCheck = -1;

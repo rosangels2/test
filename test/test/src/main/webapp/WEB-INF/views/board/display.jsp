@@ -40,6 +40,6 @@
 </div>
 <script>
 $(document).ready(function(){
- 
+
 });	//레디
 </script>
